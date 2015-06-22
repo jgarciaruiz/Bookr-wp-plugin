@@ -18,30 +18,9 @@ function bookr_create () {
 			array('%s','%s','%s','%s','%s') //data format	(string,...)		
 		);
 		$message.="Libro añadido";
-
-/*		
-
-		//upload de imagenes
-		require_once( ABSPATH . 'wp-admin/includes/image.php' );
-		require_once( ABSPATH . 'wp-admin/includes/file.php' );
-		require_once( ABSPATH . 'wp-admin/includes/media.php' );
-		
-		// Let WordPress handle the upload.
-		// Remember, 'edelsa_thumbnail' is the name of our file input in our form above.
-		$attachment_id = media_handle_upload( 'edelsa_thumbnail', $id_libro );
-		
-		if ( is_wp_error( $attachment_id ) ) {
-			// There was an error uploading the image.
-		} else {
-			// The image was uploaded successfully!
-		}
-*/
-
-
-
 	}
 	?>
-	<link type="text/css" href="<?php echo WP_PLUGIN_URL; ?>/bookr/style-admin.css" rel="stylesheet" />
+	<link type="text/css" href="<?php echo WP_PLUGIN_URL; ?>/bookr/css/style-admin-libros.css" rel="stylesheet" />
 	<div class="wrap">
 		<h2>Add new item</h2>
 		
@@ -52,7 +31,7 @@ function bookr_create () {
 		<?php endif;?>
 		
 		<form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>" enctype="multipart/form-data">			
-			<table class='wp-list-table widefat fixed'>
+			<table class='widefat crearlibro'>
 				<tr><th>ID Item</th><td><input type="text" name="id_libro" value="<?php echo $id_libro;?>"/></td></tr>
 				<tr><th>Título</th><td><input type="text" name="titulo" value="<?php echo $titulo;?>"/></td></tr>
 				<tr><th>URL</th><td><input type="text" name="url" value="<?php echo $url;?>"/></td></tr>
@@ -68,10 +47,15 @@ function bookr_create () {
 					</label>
 					</td>
 				</tr>
+				<tr><th>Códigos</th><td><textarea name="codigos"><?php echo $codigos;?></textarea></td></tr>
+				<!--
 				<tr><th>Códigos</th><td><input type="text" name="codigos" value="<?php echo $codigos;?>"/></td></tr>
-				<tr><th>Disponible</th><td><input type="text" name="disponible" value="<?php echo $disponible;?>"/></td></tr>
+				-->
+
+				<tr><th>Disponible</th><td><input type="text" name="disponible" value="0"/></td></tr>
+
 			</table>
-			<input type='submit' name="insert" value='Guardar' class='button'>
+			<input type='submit' name="insert" value='Guardar' class='button wp-core-ui button-primary'>
 		</form>
 	</div>
 <?php

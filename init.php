@@ -19,6 +19,7 @@ if(!defined('ABSPATH'))
 function install_bookr() {
    	global $wpdb;
 	$dbtable = $wpdb->prefix . 'bookr_admin';
+	$dbtable2 = $wpdb->prefix . 'bookr_register_form';
 
 		$charset_collate = $wpdb->get_charset_collate();
 
@@ -30,6 +31,16 @@ function install_bookr() {
 			thumbnail varchar(128) NOT NULL,
 			codigos varchar(512) NOT NULL,
 			disponible tinytext NOT NULL,
+			UNIQUE KEY id (id)
+		);
+		CREATE TABLE " . $dbtable2 . " (
+			id mediumint(9) NOT NULL AUTO_INCREMENT,
+			user_id mediumint(9) NOT NULL,
+			user_login mediumtext NOT NULL,
+			user_email mediumtext NOT NULL,
+			codigo_libro mediumtext NOT NULL,
+			fecha_activacion varchar(56) NOT NULL,
+			fecha_expiracion varchar(56) NOT NULL,
 			UNIQUE KEY id (id)
 		)$charset_collate;";
 
@@ -99,6 +110,10 @@ function bookr_menu_icon() {
 }
 
 define('ROOTDIR', plugin_dir_path(__FILE__));
+require_once(ROOTDIR . 'user-register.php');
+
+require_once(ROOTDIR . 'load-tpl.php');
+
 require_once(ROOTDIR . 'books-list.php');
 require_once(ROOTDIR . 'books-create.php');
 require_once(ROOTDIR . 'books-update.php');

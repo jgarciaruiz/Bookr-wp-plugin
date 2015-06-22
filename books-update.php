@@ -38,7 +38,7 @@ function bookr_update () {
 		}
 	}
 ?>
-	<link type="text/css" href="<?php echo WP_PLUGIN_URL; ?>/bookr/style-admin.css" rel="stylesheet" />
+	<link type="text/css" href="<?php echo WP_PLUGIN_URL; ?>/bookr/css/style-admin-libros.css" rel="stylesheet" />
 	<div class="wrap">
 
 		<h2>Libros</h2>
@@ -65,7 +65,7 @@ function bookr_update () {
 			else {
 		?>
 			<form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
-				<table class='wp-list-table widefat fixed'>
+				<table class='wp-list-table widefat crearlibro'>
 					<tr><th>ID Item</th><td><input type="text" name="id_libro" value="<?php echo $id_libro;?>"/></td></tr>
 					<tr><th>Título</th><td><input type="text" name="titulo" value="<?php echo $titulo;?>"/></td></tr>
 					<tr><th>URL</th><td><input type="text" name="url" value="<?php echo $url;?>"/></td></tr>
@@ -84,8 +84,10 @@ function bookr_update () {
 					<tr><th>Códigos</th><td><input type="text" name="codigos" value="<?php echo $codigos;?>"/></td></tr>
 					<tr><th>Disponible</th><td><input type="text" name="disponible" value="<?php echo $disponible;?>"/></td></tr>
 				</table>
-				<input type='submit' name="update" value='Guardar' class='button'> &nbsp;&nbsp;
-				<input type='submit' name="delete" value='Eliminar' class='button' onclick="return confirm('&iquest;Est&aacute;s seguro de borrar este elemento?')">
+
+				<a href="<?php echo admin_url('admin.php?page=bookr_list_items')?>" class="button wp-core-ui button-primary" >&laquo; Volver</a> &nbsp;&nbsp;
+				<input type='submit' name="update" value='Guardar' class='button wp-core-ui button-primary'> &nbsp;&nbsp;
+				<input type='submit' name="delete" value='Eliminar' class='button wp-core-ui delete' onclick="return confirm('&iquest;Est&aacute;s seguro de borrar este elemento?')"> &nbsp;&nbsp;
 			</form>
 		<?php }?>
 

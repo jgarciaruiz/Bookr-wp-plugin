@@ -1,0 +1,55 @@
+.tablenav .tablenav-pages {
+  float: right;
+  display: block;
+  cursor: default;
+  height: 30px;
+  color: #555;
+  line-height: 30px;
+  font-size: 12px;
+}
+
+.tablenav .displaying-num {
+  margin-right: 2px;
+  color: #777;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.libros textarea.libroscode{
+  resize: none!important;
+  overflow-x: scroll;
+  height: 60px;
+  width: 220px; 
+}
+
+.libros .thumb-col{
+  width: 80px;
+}
+
+.libros .codes-col{
+  width: 240px;
+}
+
+#list-addnew {
+  margin: 10px 0 20px;
+}
+
+
+.wp-core-ui .delete {
+  background: #D20000;
+  border-color: #A00;
+  -webkit-box-shadow: inset 0 1px 0 rgba(230, 120, 120, 0.5),0 1px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 1px 0 rgba(230, 120, 120, 0.5),0 1px 0 rgba(0, 0, 0, 0.15);
+  color: #FFF;
+  text-decoration: none;
+}
+.wp-core-ui .delete:hover {
+  color: #FFF;
+  border-color: #960000;
+  background-color: #C50000;
+}
+
+.wp-list-table.widefat.crearlibro, .widefat.crearlibro{
+  width: auto;
+  margin-bottom: 20px;
+}
