@@ -53,3 +53,15 @@
   width: auto;
   margin-bottom: 20px;
 }
+
+
+/* =========================================
+        Perfil usuarios
+========================================= */
+.description.indicator-hint{
+  margin: 2px 0 5px;
+  color: #666;
+  font-size: 13px;
+  font-style: italic;
+}
+}

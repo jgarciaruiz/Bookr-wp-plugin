@@ -20,6 +20,7 @@ function install_bookr() {
    	global $wpdb;
 	$dbtable = $wpdb->prefix . 'bookr_admin';
 	$dbtable2 = $wpdb->prefix . 'bookr_register_form';
+	$dbtable3 = $wpdb->prefix . 'bookr_book_keys';
 
 		$charset_collate = $wpdb->get_charset_collate();
 
@@ -41,6 +42,43 @@ function install_bookr() {
 			codigo_libro mediumtext NOT NULL,
 			fecha_activacion varchar(56) NOT NULL,
 			fecha_expiracion varchar(56) NOT NULL,
+			UNIQUE KEY id (id)
+		);
+		CREATE TABLE " . $dbtable3 . " (
+			id mediumint(9) NOT NULL AUTO_INCREMENT,
+			user_id mediumint(9) NOT NULL,
+			user_login mediumtext NOT NULL,
+			user_email mediumtext NOT NULL,
+			codigo_l01 mediumtext NOT NULL,
+			codigo_l02 mediumtext NOT NULL,
+			codigo_l03 mediumtext NOT NULL,
+			codigo_l04 mediumtext NOT NULL,
+			codigo_l05 mediumtext NOT NULL,
+			codigo_l06 mediumtext NOT NULL,
+			codigo_l07 mediumtext NOT NULL,
+			codigo_l08 mediumtext NOT NULL,
+			codigo_l09 mediumtext NOT NULL,
+			codigo_l10 mediumtext NOT NULL,			
+			fecha_activacion01 varchar(56) NOT NULL,
+			fecha_expiracion01 varchar(56) NOT NULL,
+			fecha_activacion02 varchar(56) NOT NULL,
+			fecha_expiracion02 varchar(56) NOT NULL,
+			fecha_activacion03 varchar(56) NOT NULL,
+			fecha_expiracion03 varchar(56) NOT NULL,
+			fecha_activacion04 varchar(56) NOT NULL,
+			fecha_expiracion04 varchar(56) NOT NULL,
+			fecha_activacion05 varchar(56) NOT NULL,
+			fecha_expiracion05 varchar(56) NOT NULL,
+			fecha_activacion06 varchar(56) NOT NULL,
+			fecha_expiracion06 varchar(56) NOT NULL,
+			fecha_activacion07 varchar(56) NOT NULL,
+			fecha_expiracion07 varchar(56) NOT NULL,
+			fecha_activacion08 varchar(56) NOT NULL,
+			fecha_expiracion08 varchar(56) NOT NULL,
+			fecha_activacion09 varchar(56) NOT NULL,
+			fecha_expiracion09 varchar(56) NOT NULL,
+			fecha_activacion10 varchar(56) NOT NULL,
+			fecha_expiracion10 varchar(56) NOT NULL,																											
 			UNIQUE KEY id (id)
 		)$charset_collate;";
 
@@ -96,9 +134,21 @@ function bookr_modificar_menu() {
 		'bookr_update', //menu slug
 		'bookr_update' //function
 	); 
+
+
+	add_users_page(
+         'Tus Libros' //page_title
+        ,'Tus Libros' //menu_title
+        ,'read' //capability
+        ,$current_user->user_login //menu_slug
+        ,'bookr_user_profile' //function
+    );
+
 }
 
 add_action( 'admin_head', 'bookr_menu_icon' );
+
+
 function bookr_menu_icon() {
 ?>
     <style>
@@ -110,14 +160,21 @@ function bookr_menu_icon() {
 }
 
 define('ROOTDIR', plugin_dir_path(__FILE__));
+
+//formulario registro
 require_once(ROOTDIR . 'user-register.php');
 
+//templates para el front
 require_once(ROOTDIR . 'load-tpl.php');
 
+//CRUD libros
 require_once(ROOTDIR . 'books-list.php');
 require_once(ROOTDIR . 'books-create.php');
 require_once(ROOTDIR . 'books-update.php');
-require_once(ROOTDIR . 'user-profile.php');
+
+//usuarios y códigos de libro
+require_once(ROOTDIR . 'user-profile.php'); //para que el admin pueda editar los codigos de los usuarios si es necesario
+require_once(ROOTDIR . 'user-profile-books.php'); //panel para que usuarios añadan sus libros
 
 
 
