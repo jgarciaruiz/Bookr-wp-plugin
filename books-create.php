@@ -12,22 +12,23 @@ function bookr_create () {
 	if(isset($_POST['insert'])){
 	   	global $wpdb;
 		$dbtable = $wpdb->prefix . 'bookr_admin';
-		$dbtable2 = $wpdb->prefix . 'bookr_book_keys';
 
 		//grabar datos para listar libros en la sección libros del admin
 		$wpdb->insert(
 			$dbtable, //table
-			array('id_libro' => $id_libro,'titulo' => $titulo,'url' => $url,'thumbnail' => $thumbnail,'codigos' => $codigos,'disponible' => $disponible), //data
-			array('%s','%s','%s','%s','%s') //data format	(string,...)		
+			array('id_libro' => $id_libro,'titulo' => $titulo,'url' => $url,'thumbnail' => $thumbnail,'codigos' => $codigos,'disponible' => $disponible,'categoria' => $categoria), //data
+			array('%s','%s','%s','%s','%s','%s') //data format	(string,...)		
 		);
 
 		//grabar cada código en una fila en la tabla de edelsalibros_codigos
 		$lines = explode(" ", $codigos);
+		$dbtable2 = $wpdb->prefix . 'bookr_book_keys';
+
 		foreach($lines as $line) {
 			$wpdb->insert(
 				$dbtable2, //table
-				array('id_libro' => $id_libro,'titulo' => $titulo,'url' => $url,'thumbnail' => $thumbnail,'codigo' => $line,'categoria' => $categoria), //data
-				array('%s','%s','%s','%s','%s','%s') //data format	(string,...)		
+				array('id_libro' => $id_libro,'titulo' => $titulo,'url' => $url,'thumbnail' => $thumbnail,'categoria' => $categoria,'codigo' => $line), //data
+				array('%s','%s','%s','%s','%s','%s') //data format	(string,...)			
 			);
 		}
 
@@ -59,10 +60,10 @@ function bookr_create () {
 						<label for="upload_image">
 					    	<input id="upload_image" type="hidden" name="ad_image" value="http://" /> 
 					    	<input id="upload_image_button" class="button" type="button" value="Seleccionar imagen" />
-					</label>
+						</label>
 					</td>
 				</tr>
-				<tr><th>Códigos</th><td><textarea name="codigos"><?php echo $codigos;?></textarea></td></tr>
+				<tr><th>Códigos</th><td><textarea name="codigos"></textarea></td></tr>
 				<tr><th>Categoría</th><td>
 					<select name="categoria">
 					  <option value="profesor">Profesor</option>

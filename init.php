@@ -51,6 +51,8 @@ function install_bookr() {
 			titulo mediumtext NOT NULL,
 			url varchar(256) NOT NULL,
 			thumbnail varchar(128) NOT NULL,																											
+			categoria varchar(28) NOT NULL,																											
+			codigo varchar(56) NOT NULL,																											
 			UNIQUE KEY id (id)
 		)$charset_collate;";
 
@@ -178,4 +180,26 @@ function my_admin_scripts() {
 }
 
 
-//
+//redirect to login page if not logged in (tiene sentido usar esta funcion si toda la web será de acceso privado)
+/*
+function redirect_user() {
+  if ( ! is_user_logged_in() && ! is_page( 'login' ) ) {
+    $return_url = esc_url( home_url( '/wp-admin/' ) );
+    wp_redirect( $return_url );
+    exit;
+  }
+}
+add_action( 'template_redirect', 'redirect_user' );
+*/
+
+
+//obligar estar logado en determinadas páginas (perfil usuario, lista libros, subir libros...)
+function private_page_redirect_user(){
+	if( ! is_user_logged_in() && is_page("listado-libros")){
+	    wp_redirect( site_url( '/wp-admin' ) ); 
+	    exit();
+	}
+	}
+add_action( 'template_redirect', 'private_page_redirect_user');
+
+
