@@ -64,6 +64,7 @@ class PageTemplater {
                 $this->templates = array(
                         'tpl/page-books.php'     => '01. Lista Libros',
                         'tpl/page-book.php'     => '02. Contenido Libro',
+                        'page-user-add-book.php'     => '03. Formulario Añadir Libro',
                 );
 				
         } 

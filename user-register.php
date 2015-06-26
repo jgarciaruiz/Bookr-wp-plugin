@@ -15,6 +15,7 @@
     }
 
     //2. Validar campo código libro, que es obligatorio para registrarse
+    /*
     add_filter( 'registration_errors', 'edelsalibros_erroes_registro_usuarios', 10, 3 );
     function edelsalibros_erroes_registro_usuarios( $errors, $sanitized_user_login, $user_email ) {
         
@@ -24,21 +25,7 @@
 
         return $errors;
     }
-
-function add($date_str, $months)
-{
-    $date = new DateTime($fecha_activacion);
-    $start_day = $date->format('j');
-
-    $date->modify("+{$months} month");
-    $end_day = $date->format('j');
-
-    if ($start_day != $end_day)
-        $date->modify('last day of last month');
-
-    return $date;
-}
-
+    */
 
     //3. Guardar valor del campo añadido al formulario
     add_action( 'user_register', 'edelsalibros_guardar_codigolibro' );

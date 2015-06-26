@@ -30,6 +30,7 @@ function install_bookr() {
 			titulo mediumtext NOT NULL,
 			url varchar(256) NOT NULL,
 			thumbnail varchar(128) NOT NULL,
+			categoria varchar(56) NOT NULL,			
 			codigos varchar(512) NOT NULL,
 			disponible tinytext NOT NULL,
 			UNIQUE KEY id (id)
@@ -46,39 +47,10 @@ function install_bookr() {
 		);
 		CREATE TABLE " . $dbtable3 . " (
 			id mediumint(9) NOT NULL AUTO_INCREMENT,
-			user_id mediumint(9) NOT NULL,
-			user_login mediumtext NOT NULL,
-			user_email mediumtext NOT NULL,
-			codigo_l01 mediumtext NOT NULL,
-			codigo_l02 mediumtext NOT NULL,
-			codigo_l03 mediumtext NOT NULL,
-			codigo_l04 mediumtext NOT NULL,
-			codigo_l05 mediumtext NOT NULL,
-			codigo_l06 mediumtext NOT NULL,
-			codigo_l07 mediumtext NOT NULL,
-			codigo_l08 mediumtext NOT NULL,
-			codigo_l09 mediumtext NOT NULL,
-			codigo_l10 mediumtext NOT NULL,			
-			fecha_activacion01 varchar(56) NOT NULL,
-			fecha_expiracion01 varchar(56) NOT NULL,
-			fecha_activacion02 varchar(56) NOT NULL,
-			fecha_expiracion02 varchar(56) NOT NULL,
-			fecha_activacion03 varchar(56) NOT NULL,
-			fecha_expiracion03 varchar(56) NOT NULL,
-			fecha_activacion04 varchar(56) NOT NULL,
-			fecha_expiracion04 varchar(56) NOT NULL,
-			fecha_activacion05 varchar(56) NOT NULL,
-			fecha_expiracion05 varchar(56) NOT NULL,
-			fecha_activacion06 varchar(56) NOT NULL,
-			fecha_expiracion06 varchar(56) NOT NULL,
-			fecha_activacion07 varchar(56) NOT NULL,
-			fecha_expiracion07 varchar(56) NOT NULL,
-			fecha_activacion08 varchar(56) NOT NULL,
-			fecha_expiracion08 varchar(56) NOT NULL,
-			fecha_activacion09 varchar(56) NOT NULL,
-			fecha_expiracion09 varchar(56) NOT NULL,
-			fecha_activacion10 varchar(56) NOT NULL,
-			fecha_expiracion10 varchar(56) NOT NULL,																											
+			id_libro mediumtext NOT NULL,
+			titulo mediumtext NOT NULL,
+			url varchar(256) NOT NULL,
+			thumbnail varchar(128) NOT NULL,																											
 			UNIQUE KEY id (id)
 		)$charset_collate;";
 
@@ -94,8 +66,15 @@ register_activation_hook(__FILE__,'install_bookr');
 //uninstall delete plugin table from db
 function uninstall_bookr() {
 	global $wpdb;
+
 	$dbtable = $wpdb->prefix . 'bookr_admin';
+	$dbtable2 = $wpdb->prefix . 'bookr_register_form';
+	$dbtable3 = $wpdb->prefix . 'bookr_book_keys';
+
 	$wpdb->query("DROP TABLE IF EXISTS $dbtable");
+	$wpdb->query("DROP TABLE IF EXISTS $dbtable2");
+	$wpdb->query("DROP TABLE IF EXISTS $dbtable3");	
+
 }
 register_uninstall_hook( __FILE__, 'uninstall_bookr' );
 
@@ -159,6 +138,16 @@ function bookr_menu_icon() {
 <?php
 }
 
+function my_myme_types($mime_types){
+	//http://www.freeformatter.com/mime-types-list.html
+    $mime_types['svg'] = 'image/svg+xml';
+    $mime_types['csv'] = 'text/csv';
+    return $mime_types;
+}
+add_filter('upload_mimes', 'my_myme_types', 1, 1);
+
+
+
 define('ROOTDIR', plugin_dir_path(__FILE__));
 
 //formulario registro
@@ -177,11 +166,6 @@ require_once(ROOTDIR . 'user-profile.php'); //para que el admin pueda editar los
 require_once(ROOTDIR . 'user-profile-books.php'); //panel para que usuarios añadan sus libros
 
 
-
-
-
-
-
 //script admin dash para llamar al media uploader de WP
 add_action('admin_enqueue_scripts', 'my_admin_scripts');
 function my_admin_scripts() {
@@ -195,4 +179,3 @@ function my_admin_scripts() {
 
 
 //
-
