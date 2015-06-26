@@ -1,12 +1,247 @@
+/* Basic Styles
+================================================== */
+body {
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: 100%;
+	font-family: "Myriad Pro", "Lucida Grande", "Lucida Sans Unicode", Arial, sans-serif;
+	background-color: #eeeef4;
+}
+
+.center{
+	width: 960px;
+	margin: 0 auto;
+}
+
+.left{
+	float: left;
+}
+
+.right{
+	float:right;
+}
+
+.clearfix{
+	clear: both;
+}
+
+.hidden{
+	display: none;
+}
+
+.visible{
+	display: block;
+}
+
+/* ===================================
+	Perfil usuario - lista libros
+=================================== */
+.listalibros-usuario{
+	background: #eeeef4;
+	width: 960px;
+	width: 90%;
+	margin: 0 auto;
+}
+.ficha-usuariowr{
+	margin-top: 20px;
+	background: #fafafd;
+	color: #4a606e;
+	border-bottom: 5px solid #d9d7dc;
+	border-radius: 3px;
+	box-sizing: border-box;
+	padding: 32px 28px 42px 28px;
+}
+.ficha-titulo{
+	font-size: 34px;
+	color: #4c616e;
+	text-transform: uppercase;
+}
+.ficha-titulo .small{
+	font-size: 17px;
+	font-weight: lighter;
+	text-align: right;
+	display: block;
+}
+
+.ficha-usuariowr .ficha-titulo{
+  box-sizing: border-box;
+  width: 240px;
+  float: left;
+  text-align: right;
+  margin: 0;
+  margin-bottom: 30px;
+}
+.userinfo {
+    display: inline-block;
+}
+.userinfo .left{
+
+}
+.userinfo .perfilpic{
+	overflow: hidden;
+	border-radius: 50%;
+}
+.userinfo .right{
+
+}
+.userinfo .perfildata {
+  color: #4A606E;
+  padding-top: 20px;
+  padding-left: 14px;
+}
+.userinfo .name{
+	font-size: 15px;
+	display: block;
+}
+.userinfo .mail{
+	font-size: 12px;
+	display: block;
+}
+.add-librowr{
+
+}
+.icon-pencil{
+	font-size: 19px;
+	font-weight: bold;
+	background: url('../img/icon-pencil.png') 0 50% no-repeat;
+	padding-left: 35px;
+	text-transform: uppercase;
+	padding-right: 10px;
+}
+.clibrowr{
+	margin-right: 20px;
+}
+#codigo-libro{
+	height: 48px;
+	text-align: center;
+	width: 220px;
+	border-radius: 4px;
+	font-size: 14px;
+	background-color: transparent;
+	line-height: 48px;
+	border: 1px solid #6c7f8a;
+	font-weight: lighter;
+	color:#8D99B5; 
+}
+
+::-webkit-input-placeholder {
+   color: #c6cad3;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #c6cad3;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #c6cad3;  
+}
+
+:-ms-input-placeholder {  
+   color: #c6cad3;  
+}
+
+.btn-add-libro{
+	color: #FFF;
+  height: 48px;
+  width: 220px;
+  padding-left: 30px;
+  background: url('../img/icon-add.png') #C12210 40px 50% no-repeat;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  text-transform: uppercase;
+  box-sizing: border-box;
+}
+
+
+.lista-libros{
+box-sizing: border-box;
+  margin-top: 40px;
+}
+.lista-libros .ficha-titulo{
+	text-align: left;
+	font-size: 34px;
+	line-height: .8em;
+	margin-bottom: 10px;
+}
+.lista-libros .ficha-titulo .small{
+	font-size: 18px;
+	text-align: left;
+}
+
+.libros-alumno, .libros-profesor, .libros-digital, .libros-online{
+    box-sizing: border-box;
+}
+
+.libro{
+	background: #fafafd;
+	border-bottom: 5px solid #d9d7dc;
+	box-sizing: border-box;
+	width: 48%;
+	margin-bottom: 20px;
+	display: inline-block;
+	margin-right: 20px;	
+}
+.libros-alumno .libro:nth-child(odd),
+.libros-profesor .libro:nth-child(odd),
+.libros-digitales .libro:nth-child(odd),
+.libros-online .libro:nth-child(odd){
+	margin-right: 0;
+}
+
+.libro .portada{
+    box-sizing: border-box;
+    width: 23%;
+}
+.libro .portadapic {
+  width: 100%;
+}
+.libro .datos{
+  margin-left: 20px;
+  padding-top: 20px;
+  display: block;
+  width: 70%;
+  box-sizing: border-box;
+}
+.libro .datos .titulo{
+	font-size: 17px;
+	font-weight: lighter;
+	color: #536671;
+	margin: 0;
+}
+.libro .datos .expiracion{
+	color: #6c7f8a;
+	font-size: 13px;
+	margin-bottom: 20px;
+}
+.red-rounded{
+	display: block;
+	text-decoration: none;
+	border-radius: 5px;
+	font-size: 14px;
+	color: #fff;
+	background: #c12210;
+	width: 100%;
+	line-height: 38px;
+	text-align: center;
+	text-transform: uppercase;
+	height: 34px;
+	margin-bottom: 12px;
+}
 .book-added {
   border-left: 6px solid #99C59A;
   background-color: #E9FAE9;
   padding-left: 10px;
+  line-height: 50px;
   color: #8AAE8B;
 }
 .codigo-aviso{
   border-left: 6px solid #C89090;
   background-color: #FCF4F4;
   padding-left: 10px;
+  line-height: 50px;
   color: #B26F6F;
+}
+.book-added p,
+.codigo-aviso p{
+	margin:0;
 }
