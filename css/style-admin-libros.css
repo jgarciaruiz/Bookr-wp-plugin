@@ -54,6 +54,11 @@
   margin-bottom: 20px;
 }
 
+/* inputs, select y textarea width 100% en formulario alta libros admin */
+table.widefat.crearlibro input,  table.widefat.crearlibro select,  #wpbody-content > div.wrap > form > table > tbody > tr:nth-child(6) > td > select {
+  width: 100%!important;
+}
+
 
 /* =========================================
         Perfil usuarios

@@ -69,11 +69,16 @@ function bookr_create () {
 					  <option value="profesor">Profesor</option>
 					  <option value="alumno">Alumno</option>
 					  <option value="digital">Digital</option>
-					  <option value="online">Online</option>
+					  <option value="online">Moodle</option>
 					</select>
 				</td></tr>
 
-				<tr><th>Disponible</th><td><input type="text" name="disponible" value="0"/></td></tr>
+				<tr><th>Disponible</th><td>
+					<select name="disponible">
+					  <option value="1" selected>Si</option>
+					  <option value="0">No</option>
+					</select>
+				</td></tr>
 
 			</table>
 			<input type='submit' name="insert" value='Guardar' class='button wp-core-ui button-primary'>

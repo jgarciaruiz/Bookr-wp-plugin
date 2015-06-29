@@ -4,7 +4,10 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-webkit-text-size-adjust: 100%;
 	font-family: "Myriad Pro", "Lucida Grande", "Lucida Sans Unicode", Arial, sans-serif;
-	background-color: #eeeef4;
+	background-color: #EEEEF4;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 .center{

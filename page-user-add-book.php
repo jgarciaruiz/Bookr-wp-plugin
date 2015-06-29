@@ -76,10 +76,11 @@
 
 	<link type="text/css" href="<?php echo WP_PLUGIN_URL; ?>/bookr/css/style-user-libros.css" rel="stylesheet" />
 
+
 <div class="listalibros-usuario">
 
 	<div class="ficha-usuariowr">
-		<h2 class="ficha-titulo"><span class="small">Bienvenido al </span>Aula virtual</h2>
+		<h2 class="ficha-titulo"><span class="small">Bienvenido a </span>Bookr</h2>
 		<div class="userinfo right">
 			<div class="left perfilpic">
 				<?php echo get_avatar($id_user, 50) ?>
@@ -125,7 +126,7 @@
 	
 	<div class="lista-libros">
 		<div class="libros-profesor">
-			<h2 class="ficha-titulo"><span class="small">Tus libros </span>Alumno</h2>
+			<h2 class="ficha-titulo"><span class="small">Tus libros </span>Categoria Alumno</h2>
 			<?php
 				$dbtable = $wpdb->prefix . 'bookr_admin';
 				$rows = $wpdb->get_results( "SELECT wp_bookr_register_form.user_id, wp_bookr_register_form.codigo_libro,  wp_bookr_book_keys.codigo, wp_bookr_register_form.fecha_activacion, wp_bookr_register_form.fecha_expiracion, wp_bookr_book_keys.id_libro, wp_bookr_book_keys.titulo, wp_bookr_book_keys.url, wp_bookr_book_keys.thumbnail, wp_bookr_book_keys.categoria FROM wp_bookr_register_form INNER JOIN wp_bookr_book_keys ON wp_bookr_register_form.codigo_libro = wp_bookr_book_keys.codigo WHERE user_id = '$id_user' AND categoria = 'alumno'");
@@ -165,7 +166,7 @@
 		</div>	<!-- /libros-alumno -->
 
 		<div class="libros-profesor">
-			<h2 class="ficha-titulo"><span class="small">Tus libros </span>Profesor</h2>
+			<h2 class="ficha-titulo"><span class="small">Tus libros </span>Categoría Profesor</h2>
 			<?php
 				$dbtable = $wpdb->prefix . 'bookr_admin';
 				$rows = $wpdb->get_results( "SELECT wp_bookr_register_form.user_id, wp_bookr_register_form.codigo_libro,  wp_bookr_book_keys.codigo, wp_bookr_register_form.fecha_activacion, wp_bookr_register_form.fecha_expiracion, wp_bookr_book_keys.id_libro, wp_bookr_book_keys.titulo, wp_bookr_book_keys.url, wp_bookr_book_keys.thumbnail, wp_bookr_book_keys.categoria FROM wp_bookr_register_form INNER JOIN wp_bookr_book_keys ON wp_bookr_register_form.codigo_libro = wp_bookr_book_keys.codigo WHERE user_id = '$id_user' AND categoria = 'profesor'");
@@ -205,7 +206,7 @@
 		</div>	<!-- /libros-profesor -->
 
 		<div class="libros-digitales">
-			<h2 class="ficha-titulo"><span class="small">Tus libros </span>Digitales</h2>
+			<h2 class="ficha-titulo"><span class="small">Tus libros </span>Categoría Digitales</h2>
 			<?php
 				$dbtable = $wpdb->prefix . 'bookr_admin';
 				$rows = $wpdb->get_results( "SELECT wp_bookr_register_form.user_id, wp_bookr_register_form.codigo_libro,  wp_bookr_book_keys.codigo, wp_bookr_register_form.fecha_activacion, wp_bookr_register_form.fecha_expiracion, wp_bookr_book_keys.id_libro, wp_bookr_book_keys.titulo, wp_bookr_book_keys.url, wp_bookr_book_keys.thumbnail, wp_bookr_book_keys.categoria FROM wp_bookr_register_form INNER JOIN wp_bookr_book_keys ON wp_bookr_register_form.codigo_libro = wp_bookr_book_keys.codigo WHERE user_id = '$id_user' AND categoria = 'digital'");
@@ -246,7 +247,7 @@
 		</div>	<!-- /libros-digitales -->
 
 		<div class="libros-online">
-			<h2 class="ficha-titulo"><span class="small">Tus libros </span>Online</h2>
+			<h2 class="ficha-titulo"><span class="small">Tus libros </span>Cateogría Moodle</h2>
 			<?php
 				$dbtable = $wpdb->prefix . 'bookr_admin';
 				$rows = $wpdb->get_results( "SELECT wp_bookr_register_form.user_id, wp_bookr_register_form.codigo_libro,  wp_bookr_book_keys.codigo, wp_bookr_register_form.fecha_activacion, wp_bookr_register_form.fecha_expiracion, wp_bookr_book_keys.id_libro, wp_bookr_book_keys.titulo, wp_bookr_book_keys.url, wp_bookr_book_keys.thumbnail, wp_bookr_book_keys.categoria FROM wp_bookr_register_form INNER JOIN wp_bookr_book_keys ON wp_bookr_register_form.codigo_libro = wp_bookr_book_keys.codigo WHERE user_id = '$id_user' AND categoria = 'online'");
@@ -287,3 +288,4 @@
 	</div><!-- /lista-libros -->
 
 </div><!-- /listalibros-usuario -->
+
